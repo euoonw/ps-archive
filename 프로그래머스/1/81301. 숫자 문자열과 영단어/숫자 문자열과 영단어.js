@@ -1,22 +1,22 @@
 function solution(s) {
   let answer = s;
 
-  const hash = {
-    0: "zero",
-    1: "one",
-    2: "two",
-    3: "three",
-    4: "four",
-    5: "five",
-    6: "six",
-    7: "seven",
-    8: "eight",
-    9: "nine",
-  };
+  const words = [
+    "zero",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+  ];
 
-  for (const key in hash) {
-    answer = answer.replaceAll(hash[key], key);
-  }
+  words.forEach((word, idx) => {
+    answer = answer.replaceAll(word, String(idx));
+  });
 
   return parseInt(answer);
 }
