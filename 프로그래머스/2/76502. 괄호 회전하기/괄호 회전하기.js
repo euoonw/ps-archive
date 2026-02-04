@@ -22,8 +22,9 @@ function solution(s) {
   s = [...s];
   for (let i = 0; i < s.length; i++) {
     if (isCorrect(s)) answer++;
-    const temp = s.pop();
-    s = [temp, ...s];
+    // const temp = s.pop();
+    // s = [temp, ...s];
+    s.push(s.shift());
   }
   return answer;
 }
