@@ -1,14 +1,10 @@
 function solution(s) {
-  let small = [];
-  let big = [];
-  for (let i = 0; i < s.length; i++) {
-    if (s[i] >= "A" && s[i] <= "Z") {
-      big.push(s[i]);
-    } else {
-      small.push(s[i]);
-    }
-  }
-  let sortedBig = big.sort((a, b) => b.localeCompare(a));
-  let sortedSmall = small.sort((a, b) => b.localeCompare(a));
-  return [...sortedSmall, ...sortedBig].join("");
+  return s
+    .split("")
+    .sort((a, b) => {
+      if (a > b) return -1;
+      if (a < b) return 1;
+      return 0;
+    })
+    .join("");
 }
