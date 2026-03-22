@@ -9,7 +9,7 @@ function solution(s, n) {
     for (let i=0; i < s.length; i++){
         if(s[i] === ' '){
             answer += ' ';
-        } else if (/[a-z]/.test(s[i])){
+        } else if (s[i] >= 'a' && s[i] <= 'z'){ // 정규식: /[a-z]/.test(s[i])
             let idx = (small.indexOf(s[i]) + n)%26;
             answer += small[idx];
         } else {
