@@ -1,37 +1,37 @@
-function isPrime(n) {
-    if (n < 2) return false;
-    else if (n === 2) return true;
-    
-    for (let i=2; i<n; i++) {
-        if (n%i === 0) return false;
+function isPrime(num) {
+    if (num<2) return false;
+    for (let i=2; i<num; i++) {
+        if (num%i === 0) return false;
     }
     return true;
 }
 
-function getPermutations(remaining, current, result) {
-    if (current !== "") result.push(current);
-    
-    if (remaining.length === 0) return;
-    
-    for (let i=0; i<remaining.length; i++){
-        const next = remaining[i];
-        const nextRemaining = [...remaining.slice(0, i), ...remaining.slice(i+1)];
-        getPermutations(nextRemaining, current+next, result);
-    }
-}
-
 function solution(numbers) {
-    const arr = numbers.split("");
     
-    const result = [];
-    getPermutations(arr, "", result);
+    const result = new Set();
+    const visited = Array(numbers.length).fill(false);
     
-    const set = new Set();
-    for (let i=0; i<result.length; i++) {
-        const number = Number(result[i]);
-        if (isPrime(number)){
-            set.add(number);
+    function getPermutations(current){
+        if (current.length !== 0) result.add(Number(current));
+        if (current.length === numbers.length) return;
+        
+        for(let i=0; i<numbers.length; i++){
+            if (visited[i]===false){
+                visited[i]=true;
+                getPermutations(current+numbers[i]);
+                visited[i]=false;
+            }
         }
     }
-    return set.size;
+    
+    getPermutations("");
+    console.log(result);
+    let answer = 0;
+    for (const n of result) {
+        if (isPrime(n)) {
+            answer++;
+            console.log(n);
+        }
+    }
+    return answer;
 }
