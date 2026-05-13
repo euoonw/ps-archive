@@ -1,14 +1,13 @@
 function solution(brown, yellow) {
-    let answer = [];
-    let row=3;
-    let col;
-    while(true){
-        if((brown - row*2)/2 === yellow/(row-2)){
-            break;
-        } else {
-            row++;
+    let width, height;
+    
+    for (let w = brown/2; w>0 ; w--){
+        const h = (brown - w*2 + 4) / 2;
+        console.log(w, h);
+        if (yellow/(w-2) === h-2) {
+            return [w, h];
         }
     }
-    answer = [yellow/(row-2)+2, row];
-    return answer;
+    
+    
 }
