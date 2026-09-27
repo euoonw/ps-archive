@@ -1,10 +1,23 @@
 function solution(arr) {
-  var answer = [];
-  for (let i = 0; i < arr.length; i++) {
-    if (i >= 0 && answer[answer.length - 1] === arr[i]) {
-      continue;
+    const result = [];
+    for(let i=0; i<arr.length; i++) {
+        if (arr[i] === result[result.length-1]) continue;
+        result.push(arr[i]);
     }
-    answer.push(arr[i]);
-  }
-  return answer;
+    return result;
 }
+
+
+
+
+
+// function solution(arr) {
+//   var answer = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     if (i >= 0 && answer[answer.length - 1] === arr[i]) {
+//       continue;
+//     }
+//     answer.push(arr[i]);
+//   }
+//   return answer;
+// }
