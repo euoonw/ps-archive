@@ -1,11 +1,17 @@
 function solution(array, commands) {
-  var answer = [];
-  for (let i = 0; i < commands.length; i++) {
-    let arr = [...array];
-    arr = arr.splice(commands[i][0] - 1, commands[i][1] - commands[i][0] + 1);
-    arr.sort((a, b) => a - b);
-    answer.push(arr[commands[i][2] - 1]);
-  }
-
-  return answer;
+    return commands.map(([i, j, k]) => 
+        array.slice(i-1, j).sort((a, b) => a - b)[k-1]
+    );
 }
+
+// function solution(array, commands) {
+//   var answer = [];
+//   for (let i = 0; i < commands.length; i++) {
+//     let arr = [...array];
+//     arr = arr.splice(commands[i][0] - 1, commands[i][1] - commands[i][0] + 1);
+//     arr.sort((a, b) => a - b);
+//     answer.push(arr[commands[i][2] - 1]);
+//   }
+
+//   return answer;
+// }
