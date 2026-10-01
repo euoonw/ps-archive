@@ -1,8 +1,21 @@
 function solution(array, commands) {
-    return commands.map(([i, j, k]) => 
-        array.slice(i-1, j).sort((a, b) => a - b)[k-1]
-    );
+    const answer = [];
+    for (const [i, j, k] of commands){
+        const arr = array.slice(i - 1, j);
+        arr.sort((a, b) => a - b);
+        console.log(arr);
+        answer.push(arr[k-1]);
+    }
+    return answer;
 }
+
+
+
+// function solution(array, commands) {
+//     return commands.map(([i, j, k]) => 
+//         array.slice(i-1, j).sort((a, b) => a - b)[k-1]
+//     );
+// }
 
 // function solution(array, commands) {
 //   var answer = [];
